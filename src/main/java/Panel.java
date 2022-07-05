@@ -2,24 +2,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.time.Duration;
 
 public class Panel extends JFrame {
     private final int WINDOW_WIDTH = 1000;
     private final int WINDOW_HEIGHT = 500;
     private final int BUTTON_X = WINDOW_WIDTH / 2 - 85;
-    private final int BUTTON_HEIGHT = 40;
     private final int BUTTON_WIDTH = 200;
     JLabel filteredPicLabel;
 
@@ -37,6 +32,7 @@ public class Panel extends JFrame {
         File output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\firstTry.png");
 
         JTextField searchBar = new JTextField();
+        int BUTTON_HEIGHT = 40;
         searchBar.setBounds(BUTTON_X, 80, 120, BUTTON_HEIGHT);
         this.add(searchBar);
         repaint();
