@@ -23,9 +23,11 @@ public class Panel extends JFrame {
     }
 
     public void doEveryThing() {
+        /* Please put the webDriver location inside "System.setProperty(..." */
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\dzouz\\Documents\\chromedriver_win32\\chromedriver.exe");
         url = ("https://www.facebook.com/public/");
-        output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\firstTry.png");
+        /* Please put the file location where you'd like to store your original image, after the "output = new File(..." */
+        output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\original.png");
 
         buttons = new Buttons();
         buttons.searchButton.addActionListener((event) -> {
