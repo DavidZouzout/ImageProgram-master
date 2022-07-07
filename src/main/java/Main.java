@@ -1,8 +1,14 @@
 import javax.swing.*;
 
-public class Main extends JFrame {
+public class Main {
+
+    static Panel panel;
 
     public static void main(String[] args) {
-        new Panel();
+      panel = new Panel();
+      panel.doEveryThing();
+      panel.setVisible(true);
+
     }
+
 }
