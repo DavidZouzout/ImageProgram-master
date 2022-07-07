@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 public class Filters extends JPanel {
+    File output;
     BufferedImage image;
     int i = 1;
 
@@ -22,7 +23,7 @@ public class Filters extends JPanel {
                     image.setRGB(x, y, newColor.getRGB());
                 }
             }
-            File output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\COLORSHIFTRIGHT_" + i + "_.png");
+            output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\COLORSHIFTRIGHT_" + i + "_.png");
             ImageIO.write(image, "png", output);
             i++;
             return output;
@@ -44,7 +45,7 @@ public class Filters extends JPanel {
                     image.setRGB(x, y, newColor.getRGB());
                 }
             }
-            File output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\colorShiftLeft_" + i + "_.png");
+            output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\colorShiftLeft_" + i + "_.png");
             ImageIO.write(image, "png", output);
             i++;
             return output;
@@ -52,7 +53,7 @@ public class Filters extends JPanel {
         return null;
     }
 
-    public File intenseColor(File file, double by) throws Exception {
+    public File sepia(File file) throws Exception {
         if (file.exists()) {
             image = ImageIO.read(file);// כדי להשתמש בתמונה
             for (int x = 0; x < image.getWidth(); x++) {
@@ -62,24 +63,26 @@ public class Filters extends JPanel {
                     int red = color.getRed();
                     int green = color.getGreen();
                     int blue = color.getBlue();
-
-                    double increaseRed = red * by;
-                    if (increaseRed > 255) increaseRed = 255;
-
-                    double increaseGreen = green * by;
-                    if (increaseGreen > 255) increaseGreen = 255;
-
-                    double increaseBlue = blue * by;
-                    if (increaseBlue > 255) increaseBlue = 255;
-
-                    Color newColor = new Color((int) increaseRed, (int) increaseGreen, (int) increaseBlue);
+                    int avg = (red + green + blue) / 3;
+                    int depth = 20;
+                    int intensity = 30;
+                    red = avg + (depth * 2);
+                    green = avg + depth;
+                    blue = avg - intensity;
+                    if (red > 255) red = 255;
+                    if (green > 255) green = 255;
+                    if (blue > 255) blue = 255;
+                    if (blue < 0) blue = 0;
+                    Color newColor = new Color(red, green, blue);
                     image.setRGB(x, y, newColor.getRGB());
                 }
             }
-            File output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\intenseColor\"+i+\"_.png");
+            //Saving the modified image
+            output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\sepia" + i + "_.png");
             ImageIO.write(image, "png", output);
             i++;
             return output;
+
         }
         return null;
     }
@@ -99,7 +102,7 @@ public class Filters extends JPanel {
                     image.setRGB(x, y, newColor.getRGB());
                 }
             }
-            File output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\greyScale" + i + "_.png");
+            output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\greyScale" + i + "_.png");
             ImageIO.write(image, "png", output);
             i++;
             return output;
@@ -122,7 +125,7 @@ public class Filters extends JPanel {
                     image.setRGB(x, y, newColor.getRGB());
                 }
             }
-            File output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\contracts" + i + "_.png");
+            output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\contracts" + i + "_.png");
             ImageIO.write(image, "png", output);
             i++;
             return output;
@@ -141,7 +144,7 @@ public class Filters extends JPanel {
                     outputImage.setRGB(image.getWidth() - x - 1, y, color.getRGB());
                 }
             }
-            File output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\contracts" + i + "_.png");
+            output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\contracts" + i + "_.png");
             ImageIO.write(outputImage, "png", output);
             i++;
             return output;

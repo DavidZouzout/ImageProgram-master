@@ -4,7 +4,7 @@ import java.io.File;
 
 public class Panel extends JFrame {
     public static final int WINDOW_WIDTH = 1000;
-    private final int WINDOW_HEIGHT = 500;
+    public static final int WINDOW_HEIGHT = 500;
     Buttons buttons;
     Filters filters = new Filters();
     Bot bot;
@@ -32,17 +32,16 @@ public class Panel extends JFrame {
             bot = new Bot();
             buttons.colorShiftRight.setVisible(true);
             buttons.colorShiftLeft.setVisible(true);
-            buttons.intenseColor.setVisible(true);
+            buttons.sepia.setVisible(true);
             buttons.greyScale.setVisible(true);
             buttons.contracts.setVisible(true);
             buttons.flipImage.setVisible(true);
             bot.picLabel.setVisible(true);
             Main.panel.filteredPicLabel.setVisible(true);
 
-
             bot.driver.manage().window().minimize();
         });
-        buttons.colorShiftRight.addActionListener((secondEvent) -> {
+        buttons.colorShiftRight.addActionListener((event) -> {
             try {
                 file = filters.colorShiftRight(output);
                 filteredPicLabel.setIcon(new ImageIcon(String.valueOf(file)));
@@ -50,7 +49,7 @@ public class Panel extends JFrame {
                 throw new RuntimeException(e);
             }
         });
-        buttons.colorShiftLeft.addActionListener((secondEvent) -> {
+        buttons.colorShiftLeft.addActionListener((event) -> {
             try {
                 file = filters.colorShiftLeft(output);
                 filteredPicLabel.setIcon(new ImageIcon(String.valueOf(file)));
@@ -58,15 +57,15 @@ public class Panel extends JFrame {
                 throw new RuntimeException(e);
             }
         });
-        buttons.intenseColor.addActionListener((secondEvent) -> {
+        buttons.sepia.addActionListener((event) -> {
             try {
-                file = filters.intenseColor(output, 1.5);
+                file = filters.sepia(output);
                 filteredPicLabel.setIcon(new ImageIcon(String.valueOf(file)));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
-        buttons.greyScale.addActionListener((secondEvent) -> {
+        buttons.greyScale.addActionListener((event) -> {
             try {
                 file = filters.greyScale(output);
                 filteredPicLabel.setIcon(new ImageIcon(String.valueOf(file)));
@@ -74,7 +73,7 @@ public class Panel extends JFrame {
                 throw new RuntimeException(e);
             }
         });
-        buttons.contracts.addActionListener((secondEvent) -> {
+        buttons.contracts.addActionListener((event) -> {
             try {
                 file = filters.contracts(output);
                 filteredPicLabel.setIcon(new ImageIcon(String.valueOf(file)));
@@ -82,7 +81,7 @@ public class Panel extends JFrame {
                 throw new RuntimeException(e);
             }
         });
-        buttons.flipImage.addActionListener((secondEvent) -> {
+        buttons.flipImage.addActionListener((event) -> {
             try {
                 file = filters.flipImage(output);
                 filteredPicLabel.setIcon(new ImageIcon(String.valueOf(file)));
@@ -90,7 +89,8 @@ public class Panel extends JFrame {
                 throw new RuntimeException(e);
             }
         });
-
+        repaint();
     }
+
 }
 

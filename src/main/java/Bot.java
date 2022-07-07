@@ -14,7 +14,7 @@ import java.time.Duration;
 public class Bot extends JFrame {
     String url = ("https://www.facebook.com/public/");
     JLabel picLabel;
-
+    BufferedImage profilePictureAsAnImage;
     ChromeDriver driver;
 
     public Bot() {
@@ -37,7 +37,7 @@ public class Bot extends JFrame {
         WebElement profilePictureXPath = driver.findElement(By.xpath("//img[@class='ji94ytn4 d2edcug0 r9f5tntg r0294ipz']"));
 
         String str = profilePictureXPath.getAttribute("src");
-        BufferedImage profilePictureAsAnImage;
+
         try {
             profilePictureAsAnImage = ImageIO.read(new URL(str));
         } catch (
@@ -64,6 +64,7 @@ public class Bot extends JFrame {
             throw new RuntimeException(e);
         }
     }
+
 
     public static BufferedImage toBufferedImage(Image img) {
         if (img instanceof BufferedImage) {
