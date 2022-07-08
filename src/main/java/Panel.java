@@ -27,7 +27,7 @@ public class Panel extends JFrame {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\dzouz\\Documents\\chromedriver_win32\\chromedriver.exe");
         url = ("https://www.facebook.com/public/");
         /* Please put the file location where you'd like to store your original image, after the "output = new File(..." */
-        output = new File("C:\\Users\\dzouz\\Pictures\\Memes\\original.png");
+        output = new File("C:\\Users\\dzouz\\Pictures\\hf\\original.png");
 
         buttons = new Buttons();
         buttons.searchButton.addActionListener((event) -> {
@@ -38,6 +38,7 @@ public class Panel extends JFrame {
             buttons.greyScale.setVisible(true);
             buttons.contracts.setVisible(true);
             buttons.flipImage.setVisible(true);
+            buttons.original.setVisible(true);
             bot.picLabel.setVisible(true);
             Main.panel.filteredPicLabel.setVisible(true);
 
@@ -86,6 +87,14 @@ public class Panel extends JFrame {
         buttons.flipImage.addActionListener((event) -> {
             try {
                 file = filters.flipImage(output);
+                filteredPicLabel.setIcon(new ImageIcon(String.valueOf(file)));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+        buttons.original.addActionListener((event) -> {
+            try {
+                file = filters.original(output);
                 filteredPicLabel.setIcon(new ImageIcon(String.valueOf(file)));
             } catch (Exception e) {
                 throw new RuntimeException(e);

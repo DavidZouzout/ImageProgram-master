@@ -15,11 +15,12 @@ public class Buttons extends JFrame {
     JButton greyScale;
     JButton contracts;
     JButton flipImage;
+    JButton original;
 
     public Buttons() {
-        title = new JLabel(" 👇 Search button 👇 ");
+        title = new JLabel(" 👇 Facebook Search button 👇 ");
         title.setFont(new Font("Ariel", Font.BOLD, 20));
-        title.setBounds(BUTTON_X, 50, 300, BUTTON_HEIGHT);
+        title.setBounds(BUTTON_X - 50, 15, 300, BUTTON_HEIGHT);
         Main.panel.add(title);
 
         searchBar = new JTextField();
@@ -58,6 +59,10 @@ public class Buttons extends JFrame {
         flipImage = makeButton("FlipImage", BUTTON_X, contracts.getY() + contracts.getHeight() + 10, BUTTON_WIDTH, BUTTON_HEIGHT);
         flipImage.setVisible(false);
         Main.panel.add(flipImage);
+        repaint();
+        original = makeButton("Original", BUTTON_X, flipImage.getY() + flipImage.getHeight() + 10, BUTTON_WIDTH, BUTTON_HEIGHT);
+        original.setVisible(false);
+        Main.panel.add(original);
         repaint();
     }
 

@@ -6,7 +6,7 @@ import java.io.File;
 
 public class Filters extends JPanel {
     /* Please put the file location where you'd like to store your filtered images, after the "File userFileLocation = new File(..." */
-    File userFileLocation = new File("C:\\Users\\dzouz\\Pictures\\Memes");
+    File userFileLocation = new File("C:\\Users\\dzouz\\Pictures\\hf");
     File output;
     Color color;
     BufferedImage image;
@@ -149,6 +149,24 @@ public class Filters extends JPanel {
                 }
             }
             output = new File(userFileLocation+"\\FlipImage_" + i + "_.png");
+            ImageIO.write(outputImage, "png", output);
+            i++;
+            return output;
+        }
+        return null;
+    }
+    public File original(File file) throws Exception {
+        if (file.exists()) {
+            image = ImageIO.read(file);
+            BufferedImage outputImage = ImageIO.read(file);
+            for (int x = 0; x < image.getWidth(); x++) {
+                for (int y = 0; y < image.getHeight(); y++) {
+                    int pixel = image.getRGB(x, y);
+                    color = new Color(pixel);
+                    outputImage.setRGB(x , y, color.getRGB());
+                }
+            }
+            output = new File(userFileLocation+"\\Original_" + i + "_.png");
             ImageIO.write(outputImage, "png", output);
             i++;
             return output;
