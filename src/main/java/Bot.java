@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
-import java.time.Duration;
 
 public class Bot extends JFrame {
     String url = ("https://www.facebook.com/public/");
@@ -27,14 +26,7 @@ public class Bot extends JFrame {
         WebElement profile = driver.findElement(By.className("_4bl7"));
         profile.click();
 
-        while (true) if (driver.findElement(By.className("gmql0nx0")).isDisplayed()) break;
-
-        WebElement profilePicture = driver.findElement(By.className("mpmpiqla"));
-        profilePicture.click();
-        while (true) if (driver.findElement(By.className("mpmpiqla")).isDisplayed()) break;
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-
-        WebElement profilePictureXPath = driver.findElement(By.xpath("//img[@class='ji94ytn4 d2edcug0 r9f5tntg r0294ipz']"));
+        WebElement profilePictureXPath = driver.findElement(By.xpath("//img[@class='_11kf img']"));
 
         String str = profilePictureXPath.getAttribute("src");
 

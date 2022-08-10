@@ -6,7 +6,7 @@ import java.io.File;
 
 public class Filters extends JPanel {
     /* Please put the file location where you'd like to store your filtered images, after the "File userFileLocation = new File(..." */
-    File userFileLocation = new File("C:\\Users\\dzouz\\Pictures\\hf");
+    File userFileLocation = new File("E:\\Pics\\lol");
     File output;
     Color color;
     BufferedImage image;
@@ -27,13 +27,12 @@ public class Filters extends JPanel {
                 }
             }
             output = new File(userFileLocation+"\\ColorShiftRight_" + i + "_.png");
-            System.out.println(output);
             ImageIO.write(image, "png", output);
             i++;
             return output;
         }
-        return null;// סוגר שבודק האם הקובץ קיים
-    }// end of the changeColor function
+        return null;
+    }
 
     public File colorShiftLeft(File file) throws Exception {
         if (file.exists()) {
@@ -81,7 +80,7 @@ public class Filters extends JPanel {
                     image.setRGB(x, y, newColor.getRGB());
                 }
             }
-            //Saving the modified image
+
             output = new File(userFileLocation+"\\Sepia_" + i + "_.png");
             ImageIO.write(image, "png", output);
             i++;

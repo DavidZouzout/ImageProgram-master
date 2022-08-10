@@ -24,10 +24,10 @@ public class Panel extends JFrame {
 
     public void doEveryThing() {
         /* Please put the webDriver location inside "System.setProperty(..." */
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\dzouz\\Documents\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\Downloads\\chromedriver_win32\\chromedriver.exe");
         url = ("https://www.facebook.com/public/");
-        /* Please put the file location where you'd like to store your original image, after the "output = new File(..." */
-        output = new File("C:\\Users\\dzouz\\Pictures\\hf\\original.png");
+        /* Please put the file location where  and how you'd like to store your original image, after the "output = new File(..." */
+        output = new File("E:\\Pics\\lol\\original.png");
 
         buttons = new Buttons();
         buttons.searchButton.addActionListener((event) -> {
